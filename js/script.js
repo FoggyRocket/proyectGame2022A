@@ -4,7 +4,7 @@ window.onload = function() {
   // new Nombreclase(....)
   const bg = new Background(canvas.width, canvas.height);
   const flappy = new Flappy(50,40,35,35)
-
+  //
 
   //ejemplo v1 pipe
   //const pipe = new Pipe("top",100,100,100) solo era `para ver si funciona mi clase
@@ -20,10 +20,16 @@ window.onload = function() {
     //iniciar juego v0.0.1
     //updateGame()
     //inicar juego v.0.0.2
+    //cuando inicie mi juego vamos a darle play al audio
+    audio.play()
     requestId = requestAnimationFrame(updateGame)
   }
   function gameOver(){
     console.log("Te moriste bro")
+    //y cuando se muera pausamos!!
+    audio.pause();
+    ctx.drawImage(dead,400,100,400,400)
+
     requestId = undefined
   }
 
@@ -49,9 +55,12 @@ window.onload = function() {
     //generar y dibujar
     generatePipes()
     drawPipes()
+    ctx.font="40px Arial"
+    ctx.fillText(`Points: ${points}`,canvas.width - 200, 100)
     // vamos a terminar el juego si el flappy toca el fondo!!
     if(flappy.y + flappy.height > canvas.height){
       gameOver()
+
     }
     if(requestId){
       requestAnimationFrame(updateGame)
@@ -88,6 +97,7 @@ window.onload = function() {
       //splice vamos  a sacar los pipes que se salgan de mi canvas
         if(pipe.x + pipe.width <= 0){
           //splice solo se puede utilizar en arreglos
+          points++;
           pipes.splice(index_pipe,1)
         }
       //voy a dibujar los pipes!      
