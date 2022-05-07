@@ -85,8 +85,18 @@ window.onload = function() {
 
     pipes.forEach((pipe,index_pipe)=>{
 
-      //voy a dibujar los pipes!
+      //splice vamos  a sacar los pipes que se salgan de mi canvas
+        if(pipe.x + pipe.width <= 0){
+          //splice solo se puede utilizar en arreglos
+          pipes.splice(index_pipe,1)
+        }
+      //voy a dibujar los pipes!      
       pipe.draw()
+      //validamos que flappy  golpee contra un pipe!!
+      if( flappy.collision(pipe) ){
+        gameOver()
+      }
+
     })
   }
 
