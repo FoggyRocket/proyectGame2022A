@@ -41,7 +41,10 @@ window.onload = function() {
     }
 
   }
-  function winGame(){}
+  function winGame(){
+    console.log("ganaste consigue una vida porque si estaba dificil!")
+    requestId = undefined
+  }
   //funcion importante el corazon/motor/alma/agua
   function updateGame(){
     frames ++; //aumentos los frames!!!
@@ -61,6 +64,10 @@ window.onload = function() {
     if(flappy.y + flappy.height > canvas.height){
       gameOver()
 
+    }
+    //Ganar
+    if( points >= 20){
+      winGame()
     }
     if(requestId){
       requestAnimationFrame(updateGame)
