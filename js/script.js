@@ -9,7 +9,7 @@ window.onload = function() {
   //ejemplo v1 pipe
   //const pipe = new Pipe("top",100,100,100) solo era `para ver si funciona mi clase
   document.getElementById("start-button").onclick = function() {
-    console.log("Si funciono!!")
+    
     if(!requestId){
       startGame();
     }
@@ -76,7 +76,7 @@ window.onload = function() {
 
   // generar y dibujar pipes
   function generatePipes(){
-    console.log("frames",frames)
+   
     //limitar que mi arreglo se llene de pipes!!!
     if( !(frames % 160 === 0) ){
       return true
